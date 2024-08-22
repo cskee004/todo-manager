@@ -1,10 +1,10 @@
 import {Task} from './toDo.js'
 
 // Test 
-const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "00/00/00");
-const t1 = new Task("Walk the dog", "Dogs need exercise", 3 ,false, "walk around the neighborhood", "00/00/00");
-const t2 = new Task("Begin that one project", "description", 1 , false, "notes", "00/00/00");
-const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so much hair.", 1 , false, "notes", "00/00/00");
+const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "08/22/24");
+const t1 = new Task("Walk the dog", "Dogs need exercise", 3 ,false, "walk around the neighborhood", "08/30/24");
+const t2 = new Task("Begin that one project", "description", 1 , false, "notes", "09/17/24");
+const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so much hair.", 1 , false, "notes", "06/14/25");
 
 
 
@@ -28,10 +28,6 @@ export class List {
     }
 
     removeTask(task) {
-        // search for task
-        // remove task from array
-        
-        //console.log({task})
 
         let tempTasks = this.#taskArr;
         const rmv = task.getId();
