@@ -36,7 +36,7 @@ export class Task {
         return this.id
     }
 
-    remainderTime() {
+    timeRemain() {
         return formatDistance(new Date(), this.date);
     }
 
@@ -63,6 +63,6 @@ let tempId = t0.getId();
 console.log({tempId});
 
 const t0Date = t0.getDate()
-const t0remainder = t0.remainderTime();
+const t0remainder = t0.timeRemain();
 console.log(t0Date)
 console.log(t0remainder);

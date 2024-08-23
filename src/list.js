@@ -9,8 +9,9 @@ const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so m
 
 
 export class List {
-    constructor(title) {
+    constructor(title, id) {
         this.title = title;
+        this.id = id;
     }
 
     #taskArr = [];
@@ -19,11 +20,16 @@ export class List {
         return this.title;
     }
 
+    getId() {
+        return this.id;
+    }
+
     getTasks() {
         return this.#taskArr;
     }
 
-    addTask(task) {
+    addTask(title, description, priority, status, note, date) {
+        let newTask = new Task(title, description, priority, status, note, date)
         this.#taskArr.push(task);
     }
 
