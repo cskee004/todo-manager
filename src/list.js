@@ -1,4 +1,6 @@
 import {Task} from './toDo.js'
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+
 
 // Test 
 const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "08/22/24");
@@ -29,8 +31,9 @@ export class List {
     }
 
     addTask(title, description, priority, status, note, date) {
-        let newTask = new Task(title, description, priority, status, note, date)
-        this.#taskArr.push(task);
+        const tempDate = format(new Date(date), 'MM/dd/yyyy');
+        let newTask = new Task(title, description, priority, status, note, tempDate)
+        this.#taskArr.push(newTask);
     }
 
     removeTask(task) {
@@ -48,20 +51,19 @@ export class List {
     }
 }
 
+// constructor 
+
+// getTitle
+
+// getId
+
+// getTasks
+
+// addTask
+
+//removeTask
 
 
 
-const myList = new List("Chris's List");
-myList.addTask(t0);
-myList.addTask(t1);
-myList.addTask(t2);
-myList.addTask(t3);
-
-let tempList = myList.getTasks();
-console.table(tempList);
-
-myList.removeTask(t0);
-console.table(tempList);
 
 
-// If the selected task titleId == task.titleId, then remove that task. 
