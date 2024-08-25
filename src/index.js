@@ -1,8 +1,6 @@
 import './modern-normalize.css';
 import './styles.css';
-import {Task} from './Task.js';
-import {List} from './List.js';
-import {Lists} from './lists.js';
-import {Tasks} from './tasks.js';
+import { Lists } from './lists.js';
+import { TodoTasks } from './todoTask.js';
 import { APIAdapter } from './APIAdapter.js';
 
