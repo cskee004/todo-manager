@@ -11,7 +11,9 @@ export class Task {
         this.status = status;
         this.addNote(note);
         this.date = format(new Date(date), 'MM/dd/yyyy')
+        //this.date = date;
         this.id = this.getTitleId();
+       
     }
 
     #notesArr = [];
@@ -40,7 +42,7 @@ export class Task {
         return this.id
     }
 
-    timeRemain() {
+    timeRemaining() {
         return formatDistance(new Date(), this.date);
     }
 
@@ -57,11 +59,12 @@ export class Task {
     }
 }
 
+function TaskTest() {
 // Constructor test
-const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "08/29/24");
-const t1 = new Task("Walk the dog", "Dogs need exercise", 3 ,false, "walk around the neighborhood", "08/30/24");
-const t2 = new Task("Begin that one project", "description", 1 , false, "notes", "09/17/24");
-const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so much hair.", 1 , false, "notes", "06/14/25");
+const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "08/29/2024");
+const t1 = new Task("Walk the dog", "Dogs need exercise", 3 ,false, "walk around the neighborhood", "08/30/2024");
+const t2 = new Task("Begin that one project", "description", 1 , false, "notes", "09/17/2024");
+const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so much hair.", 1 , false, "notes", "06/14/2025");
 
 let t0title = t0.getTitle();
 let t0Date = t0.getDate();
@@ -70,7 +73,7 @@ let t0Notes = t0.getNotes();
 console.log({t0title} ,{t0Date}, {t0Id}, {t0Notes});
 
 // timeRemain
-let t0Remain = t0.timeRemain();
+let t0Remain = t0.timeRemaining();
 console.log({t0Remain});
 
 // addNote
@@ -82,6 +85,8 @@ let testAddNote = t0.getNotes();
 console.log({testAddNote});
 
 // removeNote
+t1.addNote(newNote);
 t1.removeNote(0);
 let testRemoveNote = t1.getNotes()
 console.log({testRemoveNote});
+}

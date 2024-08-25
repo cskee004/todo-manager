@@ -1,14 +1,6 @@
-import {Task} from './toDo.js';
-import {List} from './list.js'
+import {Task} from './Task.js';
+import {List} from './List.js'
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
-
-// Test 
-const t0 = new Task("Take trash out", "The kitchen stinks", 2 , false, "dont forget the recycling", "08/22/24");
-const t1 = new Task("Walk the dog", "Dogs need exercise", 3 ,false, "walk around the neighborhood", "08/30/24");
-const t2 = new Task("Begin that one project", "description", 1 , false, "notes", "09/17/24");
-const t3 = new Task("Fix clogged drain in upstairs bathroom", "why is there so much hair.", 1 , false, "notes", "06/14/25");
-
-
 
 export class APIAdapter {
 
@@ -16,40 +8,38 @@ export class APIAdapter {
     id = 0;
     
 
-    createList(title, id) {
-        let newList = new List(title, id);
+    createList(listTitle, listId) {
+        let newList = new List(listTitle, listId);
         this.#listArr.push(newList);
     }
 
-    addToList(id) {
-        // find the selected list
-        // Get title, description, priority, status, note, date from forms 
-        // Pass title, description, priority, status, note, date to selected list 
-        let title = "Take trash out";
-        let description = "The kitchen stinks"
-        let priority = 2;
-        let status = false;
-        let note = "dont forget the recycling";
-        const date = "08/22/24";
-        const testDate = format(new Date(date), 'MM/dd/yyyy')
-        this.#listArr[id].addTask(title, description, priority, status, note, testDate);
+    addToList(listId, taskTitle, description, priority, status, note, date) {
+
+        const newTask = new Task(taskTitle, description, priority, status, note, date);
+        
+        for (let i = 0; i < this.#listArr.length; i++) {
+            let tempId = this.#listArr[i].getId();
+            if (listId == tempId) {
+                this.#listArr[i].addTask(newTask);
+            }
+        }
         
     }
 
-    getList(id) {
+    getList(listId) {
         for (let i = 0; i < this.#listArr.length; i++) {
             let tempId = this.#listArr[i].getId();
-            if (id == tempId) {
+            if (listId == tempId) {
                 return this.#listArr[i];
             }
         }
     }
 
-    deleteList(id) {
+    deleteList(listId) {
         for (let i = 0; i < this.#listArr.length; i++) {
             let tempId = this.#listArr[i].getId();
-            if (id == tempId) {
-                return this.#listArr.splice(i, 1);
+            if (listId == tempId) {
+                this.#listArr.splice(i, 1);
             }
         }
     }
@@ -60,13 +50,19 @@ export class APIAdapter {
 
 }
 
-// Create lists
+const listId = 1;
+const taskTitle = "Take trash out";
+const taskDescription = "The kitchen stinks";
+const taskPriority = 2;
+const taskStatus = false;
+const taskNote = "blank"
+const taskDate = "08/22/2024"
 
-// Get lists
+let current = new APIAdapter();
+current.createList("list 1", 1);
 
-// Delete list
+current.addToList(listId, taskTitle, taskDescription, taskPriority, taskStatus, taskNote ,taskDate);
 
-// Add task to list
-
-
+const list = current.getList(listId);
+console.log(list);
 
