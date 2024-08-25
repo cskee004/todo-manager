@@ -5,4 +5,8 @@ export class Lists {
         this.idTag = idTag;
         this.title = title;
     }
+
+    getIdTag() {
+        return this.idTag;
+    }
 }

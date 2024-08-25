@@ -64,5 +64,5 @@ current.createList("list 1", 1);
 current.addToList(listId, taskTitle, taskDescription, taskPriority, taskStatus, taskNote ,taskDate);
 
 const list = current.getList(listId);
-console.log(list);
+
 

@@ -1,4 +1,4 @@
-import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { differenceInDays, format, formatDistance, formatRelative, subDays } from 'date-fns'
 
 export class TodoTasks {
     constructor(id, title, description, dueDate, note) {
@@ -7,7 +7,8 @@ export class TodoTasks {
         this.description = description;
         this.dueDate = format(new Date(dueDate), 'MM/dd/yyyy')
         this.addNote(note);
-        this.timeRemaining = formatDistance(new Date(), this.dueDate);
+        //this.timeRemaining = formatDistance(new Date(), this.dueDate);
+        this.daysRemaining = differenceInDays(dueDate, new Date());
     }
 
     #notesArr = []
@@ -27,7 +28,11 @@ export class TodoTasks {
         }
     }
 
-    getRemainingTime() {
+    getTitle() {
+        return this.title;
+    }
+
+    getRemainingDays() {
         return this.timeRemaining;
     }
 }
